@@ -1,0 +1,23 @@
+[project]
+name = "data-ai-agent-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipython>=9.17.1",
+    "langchain>=1.4.0",
+    "langchain-anthropic>=1.7.1",
+    "langchain-openai>=1.6.0",
+    "langgraph>=1.2.11",
+    "psycopg2-binary>=2.9.12",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.3",
+]
+
+[project.scripts]
+data-ai-agent-project = "data_ai_agent_project:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
