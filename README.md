@@ -2,26 +2,11 @@
 A sophisticated multi-agent system for intelligent data processing and analysis using LangGraph. This project demonstrates a complete implementation of an agentic architecture with specialised sub-agents for SQL operations and ETL workflows.
 
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [Usage](#usage)
-- [Agent Descriptions](#agent-descriptions)
-- [Data Models](#data-models)
-- [Examples](#examples)
-- [Contributing](#contributing)
-
 ---
 
 ## Overview
 
-**Agentic AI Data Agent** is an intelligent system that processes natural language queries and routes them to specialised agents for execution. The main agent acts as an intelligent router that understands user intent and delegates tasks to either the **SQL Analyst Agent** (for database queries) or the **ETL Analyst Agent** (for data extraction and transformation operations).
+**Agentic AI Data Agent** is an intelligent system that processes natural language queries and routes them to specialised agents for execution. The main agent serves as an intelligent router that understands user intent and delegates tasks to either the **SQL Analyst Agent** (for database queries) or the **ETL Analyst Agent** (for data extraction and transformation).
 
 This project showcases modern AI engineering practices including:
 - Multi-agent orchestration with LangGraph
@@ -30,7 +15,34 @@ This project showcases modern AI engineering practices including:
 - Tool-based agent architecture
 - Dynamic LLM selection based on task complexity
 
----
+---- 
+
+## What Problem This Solves
+
+Most teams have people who need answers from company data — sales trends, user counts, ride completion rates — but don't know SQL, and don't want to wait on a data analyst for every ad-hoc question. At the same time, raw "text-to-SQL" tools are risky: an LLM that can write SQL can also write a `DELETE FROM users;` if the prompt is even slightly ambiguous or adversarial.
+
+This project builds a multi-agent system that lets a non-technical user ask a plain-English question and get back a safe, accurate answer grounded in the actual database schema — without ever exposing a raw, unvalidated SQL execution path. It also extends beyond querying: to handle the data engineering side (loading and transforming data), not just reading it.
+
+### What the Router Does
+
+The **Data Agent (Router)** is the single entry point for every user request. Its job is to classify intent and delegate — it doesn't generate SQL, transform data, or talk to the database itself.
+
+When a request comes in, the router decides: *is this a question about existing data (read/analyze), or is this a request to move/transform data (extract, load, pipeline work)?* Based on that classification, it hands the request off to the appropriate specialist — the SQL Analyst Agent or the ETL Analyst Agent — and returns whatever that sub-agent produces.
+
+This keeps the system modular: the router only needs to reason about *intent*, and each sub-agent only needs to be excellent at its own narrow job. New capabilities (e.g., a future "Reporting Agent") plug in by adding another branch at the router, without touching the internals of the existing agents.
+
+### Why Separate SQL vs ETL Agents (Instead of One Agent Doing Both)
+
+These are fundamentally different jobs with different risk profiles, different inputs, and different failure modes — collapsing them into one agent would mean sacrificing safety, clarity, or both:
+
+- **Different goals.** The SQL Analyst Agent answers questions about data that already exists. The ETL Analyst Agent moves and reshapes data into the system in the first place. One is read-only by design; the other is inherently write-heavy. Merging them muddies that boundary — a "smart" agent that both answers questions *and* writes data is much harder to reason about and secure.
+
+- **Different safety requirements.** The SQL Analyst Agent has a strict Safety Validation step that rejects any query attempting to modify the database — this only makes sense because the agent's entire job is supposed to be read-only. The ETL Agent, by contrast, is *expected* to write data (Extract, Load, Transform) as its core function. A single merged agent would need to distinguish "this write is my job" from "this write is a rejected exploit" using the same guardrail — a much fuzzier and riskier line to draw than just keeping the two agents separate from the start.
+
+- **Different internal pipelines.** SQL Analyst follows a linear "understand → generate → validate → execute → explain" flow tailored to answering questions. ETL Analyst follows a distinct "extract → transform → load" pipeline suited to batch/data-movement logic and code execution rather than natural-language answer generation. Trying to encode both pipelines as conditional branches in a single agent would make the graph harder to test, extend, and explain — whereas two focused agents each remain simple enough to reason about, debug, and extend independently.
+
+
+------- 
 
 ## Architecture
 
