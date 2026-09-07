@@ -308,16 +308,16 @@ Data_Agent/
 
 ## 🚨 Troubleshooting
 
-## Issue: "Database connection failed"
+**Issue:** "Database connection failed"
 **Solution:** Verify PostgreSQL is running and credentials in `.env` are correct
 
-## Issue: "API key not found"
+**Issue:** "API key not found"
 **Solution:** Ensure API keys are set in the `.env` file
 
-## Issue: "SQL query unsafe"
+**Issue:** "SQL query unsafe"
 **Solution:** The query contains destructive operations. Reformulate as a SELECT query only
 
-## Issue: "Module not found"
+**Issue:** "Module not found"
 **Solution:** Activate the virtual environment and reinstall dependencies
 
 ---
