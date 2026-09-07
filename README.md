@@ -58,6 +58,9 @@ The system follows a hierarchical agent architecture:
          └─► Answer Generation   
 ```
 
+<img width="874" height="358" alt="Screenshot 2026-09-07 at 9 42 46 PM" src="https://github.com/user-attachments/assets/1789907c-7b3d-46c3-b480-6272fc144b66" />
+
+
 ### State Flow
 
 1. **User Input** → Natural language query
