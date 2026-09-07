@@ -2,7 +2,7 @@
 A sophisticated multi-agent system for intelligent data processing and analysis using LangGraph. This project demonstrates a complete implementation of an agentic architecture with specialised sub-agents for SQL operations and ETL workflows.
 
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Architecture](#architecture)
@@ -292,7 +292,7 @@ Data_Agent/
 ---
 
 
-## 📝 Environment Variables Reference
+## Environment Variables Reference
 
 | Variable | Description | Example |
 |----------|-------------|---------|
@@ -306,18 +306,18 @@ Data_Agent/
 
 ---
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
-**Issue:** "Database connection failed"
+**Issue:** "Database connection failed"  
 **Solution:** Verify PostgreSQL is running and credentials in `.env` are correct
 
-**Issue:** "API key not found"
+**Issue:** "API key not found"  
 **Solution:** Ensure API keys are set in the `.env` file
 
-**Issue:** "SQL query unsafe"
+**Issue:** "SQL query unsafe"  
 **Solution:** The query contains destructive operations. Reformulate as a SELECT query only
 
-**Issue:** "Module not found"
+**Issue:** "Module not found"  
 **Solution:** Activate the virtual environment and reinstall dependencies
 
 ---
