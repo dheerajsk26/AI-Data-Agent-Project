@@ -73,6 +73,9 @@ The system follows a hierarchical agent architecture:
 <img width="874" height="358" alt="Screenshot 2026-09-07 at 9 42 46 PM" src="https://github.com/user-attachments/assets/1789907c-7b3d-46c3-b480-6272fc144b66" />
 
 
+<img width="857" height="714" alt="ETL AI Agent Flow-diagram" src="https://github.com/user-attachments/assets/116f19d6-0423-4004-ae5e-4bd46011aef3" />
+
+
 ### State Flow
 
 1. **User Input** → Natural language query
