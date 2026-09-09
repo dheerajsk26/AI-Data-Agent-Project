@@ -70,10 +70,18 @@ The system follows a hierarchical agent architecture:
          └─► Answer Generation   
 ```
 
+### SQL Agent 
 <img width="874" height="358" alt="Screenshot 2026-09-07 at 9 42 46 PM" src="https://github.com/user-attachments/assets/1789907c-7b3d-46c3-b480-6272fc144b66" />
 
 
+### ETL Agent
 <img width="857" height="714" alt="ETL AI Agent Flow-diagram" src="https://github.com/user-attachments/assets/116f19d6-0423-4004-ae5e-4bd46011aef3" />
+
+
+
+### GIF of working agent
+<img width="800" height="520" alt="WorkingofSQLAIAgentAnalyst" src="https://github.com/user-attachments/assets/c87f0e42-59ca-43f6-8195-f216c3fe7a8b" />
+
 
 
 ### State Flow
